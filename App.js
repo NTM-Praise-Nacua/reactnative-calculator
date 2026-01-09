@@ -35,19 +35,19 @@ export default function App() {
       if (!isNaN(b) && b != 0) {
         switch (op) {
           case "+":
-            result = Number(a + b).toFixed(2);
+            result = a + b;
             break;
           case "-":
-            result = Number(a - b).toFixed(2);
+            result = a - b;
             break;
           case "*":
-            result = Number(a * b).toFixed(2);
+            result = a * b;
             break;
           case "/":
-            result = Number(a / b).toFixed(2);
+            result = a / b;
             break;
           case "%":
-            result = Number(a * 0.01 * b).toFixed(2);
+            result = a * 0.01 * b;
             break;
           default:
             result = 0;
@@ -63,13 +63,13 @@ export default function App() {
             break;
         }
       }
-      setDisplay("= " + result);
+      setDisplay("= " + Number(result.toFixed(10)));
       setCalHistory((prev) => [
         ...prev,
         {
           id: Date.now().toString(),
           equation: display,
-          result: result,
+          result: Number(result.toFixed(10)),
         },
       ]);
     } catch (error) {
